@@ -15,10 +15,10 @@ function updateStock(producId:number,amountSold:number) {
     for (let i:number =0; i < myInventory.length; i++) {
         if (myInventory[i].id === producId) {
             if (myInventory[i].quantity < amountSold) {
-                console.log("Not enough stock for " + myInventory[i].name);
+                console.log("Not enough stock for " + myInventory[i].name + "\n");
             } else {
                 myInventory[i].quantity -= amountSold;
-                console.log("Stock updated for " + myInventory[i].name + ". New quantity: " + myInventory[i].quantity);
+                console.log("Stock updated for " + myInventory[i].name + ". New quantity: " + myInventory[i].quantity + "\n");
             }
             break;
         }
