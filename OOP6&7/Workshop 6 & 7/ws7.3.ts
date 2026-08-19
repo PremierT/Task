@@ -19,12 +19,7 @@ class Mage extends Character {
     }
     
     attack(target: Character, damage: number): void {
-        let enhancedDamage = damage * 0.8;
-        target.takeDamage(enhancedDamage);
-    }
-
-    spell(target: Character, spellDamage: number): void {
-        let enhancedSpellDamage = spellDamage * 5;
+        let enhancedSpellDamage = damage * 5;
         if (this.mana >= 20) {
             target.takeDamage(enhancedSpellDamage);
             this.mana -= 20;
@@ -41,12 +36,7 @@ class Warrior extends Character {
     }
 
     attack(target: Character, damage: number): void {
-        let enhancedDamage = damage * 1.5;
-        target.takeDamage(enhancedDamage);
-    }
-
-    Sword(target: Character, swordDamage: number): void {
-        let enhancedSwordDamage = swordDamage * 3;
+        let enhancedSwordDamage = damage * 3;
         if (this.stamina >= 10) {
             target.takeDamage(enhancedSwordDamage);
             this.stamina -= 10;
@@ -66,8 +56,8 @@ console.log(`Rogue: ${rogue.name}, Health: ${rogue.health}, Level: ${rogue.level
 
 console.log("\n\nBattle Begins!\n\n");
 
-mage.spell(warrior, 15);
+mage.attack(warrior, 15);
 
-warrior.Sword(rogue, 10);
+warrior.attack(rogue, 10);
 
 rogue.attack(mage, 150);
