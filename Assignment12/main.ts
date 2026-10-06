@@ -1,5 +1,5 @@
-import { BookDAO } from "./BookDAO";
-import { BorrowRecordDAO } from "./BorrowRecordDAO";
+import { BookDAO } from "./BookDAO.ts";
+import { BorrowRecordDAO } from "./BorrowRecordDAO.ts";
 
 const bookDAO = new BookDAO();
 const borrowRecordDAO = new BorrowRecordDAO();

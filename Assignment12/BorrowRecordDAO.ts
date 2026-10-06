@@ -1,5 +1,5 @@
-import { BaseDAO } from "./BaseDAO";
-import { BookDAO } from "./BookDAO";
+import { BaseDAO } from "./BaseDAO.ts";
+import { BookDAO } from "./BookDAO.ts";
 
 export class BorrowRecordDAO extends BaseDAO {
 
