@@ -27,47 +27,18 @@ export class BookDAO extends BaseDAO {
         if (!row) {
             return null;
         }
-        return new Book(
-            row.id,
-            row.isbn,
-            row.title,
-            row.author,
-            row.isAvailable === 1
-        );
+        return new Book(row.id,row.isbn,row.title,row.author,row.isAvailable === 1);
     }
 
-    public updateAvailability(
-        isbn: string,
-        isAvailable: boolean
-    ): boolean {
-
-        const sql = `
-            UPDATE books
-            SET isAvailable = ?
-            WHERE isbn = ?
-        `;
-
-        const result = this.db
-            .prepare(sql)
-            .run(isAvailable ? 1 : 0, isbn);
-
+    public updateAvailability(isbn: string,isAvailable: boolean): boolean {
+        const sql = `UPDATE books SET isAvailable = ? WHERE isbn = ?`;
+        const result = this.db.prepare(sql).run(isAvailable ? 1 : 0, isbn);
         return result.changes > 0;
     }
-
     public findAll(): Book[] {
-
-        const rows = this.db
-            .prepare(`SELECT * FROM books`)
-            .all() as any[];
-
+        const rows = this.db.prepare(`SELECT * FROM books`).all() as any[];
         return rows.map((row) => {
-            return new Book(
-                row.id,
-                row.isbn,
-                row.title,
-                row.author,
-                row.isAvailable === 1
-            );
+            return new Book(row.id,row.isbn,row.title,row.author,row.isAvailable === 1);
         });
     }
-}
+} 
