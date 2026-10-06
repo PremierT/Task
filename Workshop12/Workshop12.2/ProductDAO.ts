@@ -44,6 +44,10 @@ export class ProductDAO extends BaseDAO {
 
     public updateStock(id: number, newStock: number): boolean {
 
+        if (newStock < 0) {
+            return false;
+        }
+
         const stmt = this.db.prepare(`
             UPDATE products
             SET stock = ?

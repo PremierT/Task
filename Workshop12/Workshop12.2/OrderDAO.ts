@@ -49,8 +49,9 @@ export class OrderDAO extends BaseDAO {
 
             if (result.changes > 0) {
 
+                const newStock = prod.getStock() - quantity;
                 const updated = productDAO.updateStock(
-                    prod.getId(),-quantity
+                    prod.getId(), newStock
                 );
 
                 if (!updated) {
